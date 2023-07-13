@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.InMemory;
 
@@ -29,7 +30,7 @@ public class InMemoryCarDal : ICarDal
         _car.Remove(removeCar);
     }
 
-    public List<Car> GetAll()
+    public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
     {
         return _car;
     }
