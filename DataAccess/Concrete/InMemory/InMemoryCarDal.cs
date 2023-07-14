@@ -52,4 +52,9 @@ public class InMemoryCarDal : ICarDal
         updateCar.ModelYear = car.ModelYear;
   
     }
+
+    Car IEntityRepository<Car>.GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
 }

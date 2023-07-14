@@ -41,3 +41,6 @@ foreach (var car in carManager.GetCarsId(1))
     Console.WriteLine(car.Description);
 }
 
+var result = carManager.GetById(1);
+Console.WriteLine(result.CarName);
+

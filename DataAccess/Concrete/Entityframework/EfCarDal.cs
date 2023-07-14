@@ -40,6 +40,14 @@ namespace DataAccess.Concrete.Entityframework
             }
         }
 
+        public Car GetById(int id)
+        {
+            using (CarRentalContext context = new CarRentalContext())
+            {
+                return context.Cars.SingleOrDefault(p => p.Id == id);
+            }
+            
+        }
 
         public void Update(Car entity)
         {

@@ -16,4 +16,5 @@ public interface IEntityRepository<T> where T : class, IEntity,new()
     void Add(T entity);
     void Update(T entity);
     void Delete(T entity);
+    T GetById(int id);
 }

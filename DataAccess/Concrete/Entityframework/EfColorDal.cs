@@ -25,4 +25,9 @@ public class EfColorDal : IColorDal
     {
         throw new NotImplementedException();
     }
+
+    public Color GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
 }

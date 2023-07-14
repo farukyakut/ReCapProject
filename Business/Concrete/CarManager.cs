@@ -32,6 +32,10 @@ public class CarManager : ICarService
        return _carDal.GetAll();
     }
 
+    public Car GetById(int CarId)
+    {
+        return _carDal.GetById(CarId);
+    }
 
     public List<Car> GetCarsByBrandId(int BrandId)
     {
