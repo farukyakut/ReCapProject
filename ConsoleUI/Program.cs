@@ -4,43 +4,64 @@ using DataAccess.Concrete.Entityframework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 
-Console.WriteLine("Hello, World!");
-CarManager carManager = new CarManager(new EfCarDal());
-//Listeleme
+Console.WriteLine("Hello User!");
 
-foreach (var car in carManager.GetCarsByBrandId(1))
+//CarTest();
+
+ColorManager colorManager = new ColorManager(new EfColorDal());
+
+
+foreach (var color in colorManager.GetAll())
 {
-    Console.WriteLine(car.Description);
+    Console.WriteLine(color.Name);
 }
 
-carManager.Add(new Car() { BrandId = 2, CarName = "Megan", ColorId = 2, DailyPrice = 1500, ModelYear = new DateTime(2011, 10, 12), Description = "Megan Güzel Ürün" });
-
-Console.WriteLine("--------------------------------------");
-
-//Ekleme
-
-foreach (var car in carManager.GetAll())
-{
-    Console.WriteLine("Id :" + car.Id + " Marka Numarası :" + car.BrandId + " ColorId :" + car.ColorId + " DailyPrice" + car.DailyPrice + " Model Year : " + car.ModelYear
-        + " Description :" + car.Description);
-}
-//Console.WriteLine("------------------------------------------");
-
-////Silme
-
-//carManager.Delete(new Car() { Id = 5, BrandId = 2, ColorId = 3, DailyPrice = 1500, ModelYear = new DateTime(2011, 10, 12), Description = "Güzel Ürün" });
-
-//foreach (var car in carManager.GetAll())
+//static void CarTest()
 //{
-//    Console.WriteLine("Id :" + car.Id + " Marka Numarası :" + car.BrandId + " ColorId :" + car.ColorId + " DailyPrice" + car.DailyPrice + " Model Year : " + car.ModelYear
-//        + " Description :" + car.Description);
+//    CarManager carManager = new CarManager(new EfCarDal());
+//    //Listeleme
+
+//    foreach (var car in carManager.GetAll())
+//    {
+//        Console.WriteLine("{0} , {1} , {0} , {3} , {4} , {5}, {6}", car.Id, car.CarName, car.BrandId, car.ColorId, car.ModelYear, car.DailyPrice, car.Description);
+//    }
+
+//    //Ekleme
+
+//    //carManager.Add(new Car() { BrandId = 2, CarName = "Megan2", ColorId = 1, DailyPrice = 1500, ModelYear = new DateTime(2020, 11, 12), Description = "Megan 2020 Model" });
+
+//    //Console.WriteLine("--------------------------------------");
+
+
+
+//    //foreach (var car in carManager.GetAll())
+//    //{
+//    //    Console.WriteLine("Id :" + car.Id + " Marka Numarası :" + car.BrandId + " ColorId :" + car.ColorId + " DailyPrice" + car.DailyPrice + " Model Year : " + car.ModelYear
+//    //        + " Description :" + car.Description);
+//    //}
+//    Console.WriteLine("------------------------------------------");
+
+//    //Silme
+
+//    //carManager.Delete(new Car() { Id = 10, BrandId = 2, ColorId = 2, DailyPrice = 1500, ModelYear = new DateTime(2011, 10, 12), Description = "Megan Güzel Ürün" });
+
+//    //foreach (var car in carManager.GetAll())
+//    //{
+//    //    Console.WriteLine("Id :" + car.Id + " Marka Numarası :" + car.BrandId + " ColorId :" + car.ColorId + " DailyPrice: " + car.DailyPrice + " Model Year : " + car.ModelYear
+//    //        + " Description :" + car.Description);
+//    //}
+
+
+//    // Id'ye göre getirme
+
+//    //var result = carManager.GetById(1);
+//    //Console.WriteLine(result.CarName);
+
+//    carManager.Update(new Car() { Id = 11, BrandId = 2, CarName = "Megan2", ColorId = 1, DailyPrice = 1500, ModelYear = new DateTime(2020, 11, 12), Description = "Megan 2020 Modelll" });
+
+//    foreach (var car in carManager.GetAll())
+//    {
+//        Console.WriteLine("Id :" + car.Id + " Marka Numarası :" + car.BrandId + " ColorId :" + car.ColorId + " DailyPrice: " + car.DailyPrice + " Model Year : " + car.ModelYear
+//            + " Description :" + car.Description);
+//    }
 //}
-
-foreach (var car in carManager.GetCarsId(1))
-{
-    Console.WriteLine(car.Description);
-}
-
-var result = carManager.GetById(1);
-Console.WriteLine(result.CarName);
-

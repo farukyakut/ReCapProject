@@ -1,11 +1,12 @@
 ﻿using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.Identity.Client;
 
 namespace Business.Abstract;
 
 public interface ICarService
 {
-    List<Car> GetCarsId(int Id);
+    
     Car GetById(int CarId);
     List<Car> GetAll();
     void Add(Car car);
@@ -13,6 +14,7 @@ public interface ICarService
     void Delete(Car car);
     List<Car> GetCarsByBrandId(int BrandId);
     List<Car> GetCarsByColorId(int ColorId);
+    List<CarDetailDto> GetCarDetails();
 
 
 }

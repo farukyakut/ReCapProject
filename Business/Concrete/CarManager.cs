@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System.Drawing;
 
 namespace Business.Concrete;
@@ -34,7 +35,13 @@ public class CarManager : ICarService
 
     public Car GetById(int CarId)
     {
-        return _carDal.GetById(CarId);
+        return _carDal.Get(c => c.Id == CarId);
+        
+    }
+
+    public List<CarDetailDto> GetCarDetails()
+    {
+        return _carDal.GetCarDetails();
     }
 
     public List<Car> GetCarsByBrandId(int BrandId)
@@ -45,12 +52,6 @@ public class CarManager : ICarService
     public List<Car> GetCarsByColorId(int ColorId)
     {
         return _carDal.GetAll(p => p.ColorId == ColorId);
-    }
-
-    public List<Car> GetCarsId(int Id)
-    {
-        return _carDal.GetAll(p => p.Id == Id);
-
     }
 
     public void Update(Car car)
