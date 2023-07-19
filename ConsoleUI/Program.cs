@@ -11,7 +11,7 @@ Console.WriteLine("Hello User!");
 ColorManager colorManager = new ColorManager(new EfColorDal());
 
 
-foreach (var color in colorManager.GetAll())
+foreach (var color in colorManager.GetAll().Data)
 {
     Console.WriteLine(color.Name);
 }

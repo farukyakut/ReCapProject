@@ -7,18 +7,31 @@ Console.WriteLine("Hello, User!");
 ColorManager colorManager = new ColorManager(new EfColorDal());
 
 
-foreach (var color in colorManager.GetAll())
+foreach (var color in colorManager.GetAll().Data)
 {
     Console.WriteLine(color.Name);
 }
 
-var result = colorManager.GetById(1);
+var result = colorManager.GetById(1).Data;
 Console.WriteLine(result.Name);
 
 
 Console.WriteLine("--------------------------------------");
 CarManager carManager = new CarManager(new EfCarDal());
-foreach (var car in carManager.GetCarDetails())
+
+var resultt = carManager.GetCarDetails();
+
+if(resultt.Success == true)
 {
-    Console.WriteLine("{0} , {1} , {2} , {3}", car.CarName,car.ColorName, car.BrandName, car.DailyPrice );
+    foreach (var car in resultt.Data)
+    {
+        Console.WriteLine("{0} , {1} , {2} , {3}", car.CarName, car.ColorName, car.BrandName, car.DailyPrice);
+    }
+
 }
+
+else
+{
+    Console.WriteLine(resultt.Message);
+}
+

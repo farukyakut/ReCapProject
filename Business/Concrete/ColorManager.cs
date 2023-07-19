@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -17,28 +19,31 @@ public class ColorManager : IColorService
         _colorDal = colorDal;
     }
 
-    public void Add(Color brand)
+    public IResult Add(Color brand)
     {
         _colorDal.Add(brand);
+        return new SuccessResult(Messages.CarAded);
     }
 
-    public void Delete(Color brand)
+    public IResult Delete(Color brand)
     {
         _colorDal.Delete(brand);
+        return new SuccessResult(Messages.CarDeleted);
     }
 
-    public List<Color> GetAll()
+    public IDataResult<List<Color>> GetAll()
     {
-        return _colorDal.GetAll();
+        return new SuccessDataResult<List<Color>>( _colorDal.GetAll());
     }
 
-    public Color GetById(int id)
+    public IDataResult<Color> GetById(int id)
     {
-        return _colorDal.Get(p=>p.Id == id);
+        return new SuccessDataResult<Color>(_colorDal.Get(p=>p.Id == id),Messages.CarGeted);
     }
 
-    public void Update(Color brand)
+    public IResult Update(Color brand)
     {
         _colorDal.Update(brand);
+        return new SuccessResult(Messages.CarUpdated);
     }
 }
