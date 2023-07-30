@@ -18,6 +18,13 @@ namespace Business.ValidationtRules.FluentValidation
             RuleFor(p => p.ModelYear).NotEmpty();
             RuleFor(p => p.ColorId).NotEmpty();
 
+            RuleFor(p => p.CarName).Must(StartWithA).WithMessage("Ürünler A harfi ile başlamalı");
+
+        }
+
+        private bool StartWithA(string arg)
+        {
+            return arg.StartsWith("A");
         }
     }
 }

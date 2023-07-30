@@ -1,7 +1,9 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationtRules.FluentValidation;
-using Core.Results;
+using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Results;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -18,16 +20,20 @@ public class CarManager : ICarService
     {
         _carDal = carDal;
     }
+
+    [ValidationAspect(typeof(CarValidator))]
     public IResult Add(Car car)
     {
         
-        var context = new ValidationContext<Car>(car);
-        CarValidator carValidator = new CarValidator();
-        var result = carValidator.Validate(context);
-        if (!result.IsValid) 
-        {
-            throw new ValidationException(result.Errors);
-        }
+
+
+        //var context = new ValidationContext<Car>(car);
+        //CarValidator carValidator = new CarValidator();
+        //var result = carValidator.Validate(context);
+        //if (!result.IsValid) 
+        //{
+        //    throw new ValidationException(result.Errors);
+        //}
 
         _carDal.Add(car);
         return new SuccessResult(Messages.CarAded);
